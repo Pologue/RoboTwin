@@ -1,0 +1,25 @@
+#!/bin/bash
+
+unset TORCH_CUDA_ARCH_LIST
+
+# 恢复 LD_LIBRARY_PATH 和 CPATH（需提前保存）
+if [ -n "${_CONDA_BACKUP_LD_LIBRARY_PATH}" ]; then
+    export LD_LIBRARY_PATH=$_CONDA_BACKUP_LD_LIBRARY_PATH
+    unset _CONDA_BACKUP_LD_LIBRARY_PATH
+fi
+if [ -n "${_CONDA_BACKUP_CPATH}" ]; then
+    export CPATH=$_CONDA_BACKUP_CPATH
+    unset _CONDA_BACKUP_CPATH
+fi
+if [ -n "${_CONDA_BACKUP_CUDA_HOME}" ]; then
+    export CUDA_HOME=$_CONDA_BACKUP_CUDA_HOME
+    unset _CONDA_BACKUP_CUDA_HOME
+fi
+if [ -n "${_CONDA_BACKUP_CUB_HOME}" ]; then
+    export CUB_HOME=$_CONDA_BACKUP_CUB_HOME
+    unset _CONDA_BACKUP_CUB_HOME
+fi
+if [ -n "${_CONDA_BACKUP_CUDA_PATH}" ]; then
+    export CUDA_PATH=$_CONDA_BACKUP_CUDA_PATH
+    unset _CONDA_BACKUP_CUDA_PATH
+fi
