@@ -1,0 +1,12 @@
+{
+  "full_description": "依次执行: stack_bowls_three, stack_bowls_two. stack the three bowls on top of each other Then stack the two bowls on top of each other",
+  "schema": "Task1: {A} notifies the bowls; Task2: {A} notifies the first bowl, {B} notifies the second bowl",
+  "preference": "num of words should not exceed 25",
+  "seen": [
+    "Complete the combined task: 依次执行: stack_bowls_three, stack_bowls_two",
+    "Perform all subtasks in sequence",
+    "Execute the multi-step task",
+    "Step 1: Place the bowls {A} in a stacking order.",
+    "Step 2: Lift {A}, put it on the table, and stack {B} above."
+  ]
+}

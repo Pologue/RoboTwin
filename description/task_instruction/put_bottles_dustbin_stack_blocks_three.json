@@ -1,0 +1,12 @@
+{
+  "full_description": "依次执行: put_bottles_dustbin, stack_blocks_three. use arms to grab the bottles and put them into the dustbin to the left of the table Then there are three blocks on the table, the color of the blocks is <red, green and blue>, <move the blocks to the center of the table>, and <stack the blue block on the green block, and the green block on the red block>",
+  "schema": "Task1: {A} notifies the first bottle, {B} notifies the second bottle, {C} notifies the third bottle, {D} notifies the dustbin; Task2: {A} notifies the red block, {B} notifies the green block, {C} notifies the blue block, {a} notifies the arm to manipulate the red block, {b} notifies the arm to manipulate the green block, {c} notifies the arm to manipulate the blue block",
+  "preference": "num of words should not exceed 25",
+  "seen": [
+    "Complete the combined task: 依次执行: put_bottles_dustbin, stack_blocks_three",
+    "Perform all subtasks in sequence",
+    "Execute the multi-step task",
+    "Step 1: Take {A}, {B}, and {C} one at a time and place them into {D}.",
+    "Step 2: Shift {A}, {B}, {C} to the table's center, then stack {C} on {B}, and {B} on {A}."
+  ]
+}

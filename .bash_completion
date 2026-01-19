@@ -1,0 +1,43 @@
+_collect_completion() {
+    local cur prev words cword
+    _init_completion || return
+
+    case $cword in
+        1)
+            # 第1个参数：task_name → ./envs/ 下不以 _ 开头的 .py 文件（不含扩展名）
+            local envs_dir="./envs"
+            if [[ -d "$envs_dir" ]]; then
+                COMPREPLY=($(compgen -W "$(cd "$envs_dir" 2>/dev/null && ls *.py 2>/dev/null | grep -v '^_' | sed 's/\.py$//')" -- "$cur"))
+            fi
+            ;;
+        2)
+            # 第2个参数：task_config → ./task_config/ 下不以 _ 开头的 .yml 文件（不含扩展名）
+            local config_dir="./task_config"
+            if [[ -d "$config_dir" ]]; then
+                COMPREPLY=($(compgen -W "$(cd "$config_dir" 2>/dev/null && ls *.yml 2>/dev/null | grep -v '^_' | sed 's/\.yaml$//')" -- "$cur"))
+            fi
+            ;;
+        3)
+            # 第3个参数：gpu_id → 列出所有可用 GPU（通过 nvidia-smi）
+            if command -v nvidia-smi >/dev/null 2>&1; then
+                # 获取 GPU 数量（注意：可能有空格或换行）
+                local gpus=$(nvidia-smi --query-gpu=index --format=csv,noheader,nounits 2>/dev/null)
+                if [[ -n "$gpus" ]]; then
+                    COMPREPLY=($(compgen -W "$gpus" -- "$cur"))
+                else
+                    # 如果 nvidia-smi 没输出，回退到 0-7
+                    COMPREPLY=($(compgen -W "0 1 2 3 4 5 6 7" -- "$cur"))
+                fi
+            else
+                # 没有 nvidia-smi，假设最多8卡
+                COMPREPLY=($(compgen -W "0 1 2 3 4 5 6 7" -- "$cur"))
+            fi
+            ;;
+        *)
+            # 超过3个参数，不补全
+            ;;
+    esac
+}
+
+# 绑定补全函数到命令 'collect'
+complete -F _collect_completion './collect_data.sh'

@@ -1,0 +1,12 @@
+{
+  "full_description": "依次执行: click_alarmclock, click_bell. click the alarm clock's center of the top side button on the table Then click the <bell's top center> on the table",
+  "schema": "Task1: {A} notifies the alarm clock, {a} notifies the arm to click the alarm clock; Task2: {A} notifies the bell, {a} notifies the arm to click the bell",
+  "preference": "num of words should not exceed 25",
+  "seen": [
+    "Complete the combined task: 依次执行: click_alarmclock, click_bell",
+    "Perform all subtasks in sequence",
+    "Execute the multi-step task",
+    "Step 1: {a} clicks the center top button on {A}",
+    "Step 2: Press <bell's top center> using {a} on the table"
+  ]
+}
