@@ -14,7 +14,7 @@ _collect_completion() {
             # 第2个参数：task_config → ./task_config/ 下不以 _ 开头的 .yml 文件（不含扩展名）
             local config_dir="./task_config"
             if [[ -d "$config_dir" ]]; then
-                COMPREPLY=($(compgen -W "$(cd "$config_dir" 2>/dev/null && ls *.yml 2>/dev/null | grep -v '^_' | sed 's/\.yaml$//')" -- "$cur"))
+                COMPREPLY=($(compgen -W "$(cd "$config_dir" 2>/dev/null && ls *.yml 2>/dev/null | grep -v '^_' | sed 's/\.yml$//')" -- "$cur"))
             fi
             ;;
         3)
